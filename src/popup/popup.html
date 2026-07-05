@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meeting Flight</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <span class="header-plane">✈️</span>
+      <h1 class="header-title">Meeting Flight</h1>
+    </header>
+
+    <main>
+      <section class="card">
+        <div class="status-row">
+          <span class="status-label">Google Calendar</span>
+          <span id="connection-status" class="status-badge disconnected">
+            Not connected
+          </span>
+        </div>
+        <button id="connect-button" class="btn btn-primary">
+          Connect calendar
+        </button>
+        <button id="disconnect-button" class="btn btn-ghost hidden">
+          Disconnect
+        </button>
+      </section>
+
+      <section class="card">
+        <label for="lead-minutes" class="field-label">
+          Remind me this many minutes before
+        </label>
+        <div class="lead-row">
+          <input
+            id="lead-minutes"
+            type="number"
+            min="0"
+            max="120"
+            step="1"
+            class="lead-input"
+          />
+          <span class="lead-suffix">min</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="status-row">
+          <span class="status-label">Upcoming meetings</span>
+          <button id="sync-button" class="btn-link">Refresh</button>
+        </div>
+        <ul id="events-list" class="events-list">
+          <li class="events-empty">Connect your calendar to see meetings.</li>
+        </ul>
+      </section>
+
+      <button id="preview-button" class="btn btn-secondary">
+        Preview the plane ✈️
+      </button>
+
+      <p id="message" class="message hidden"></p>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

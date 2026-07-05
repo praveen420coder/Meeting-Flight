@@ -1,0 +1,125 @@
+/* Meeting Flight — plane + banner overlay.
+   High z-index and fixed positioning keep it above page content.
+   All selectors are namespaced with `mf-` to avoid clashing with host pages. */
+
+#meeting-flight-container {
+  position: fixed;
+  top: 12%;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  pointer-events: none;
+  z-index: 2147483647; /* Max 32-bit signed int: sit above everything. */
+  overflow: hidden;
+}
+
+#meeting-flight-container .mf-flyer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  transform: translateX(-100%);
+  animation: mf-fly 9s linear forwards;
+}
+
+#meeting-flight-container .mf-plane {
+  width: 120px;
+  height: 60px;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+  animation: mf-bob 1.4s ease-in-out infinite;
+}
+
+#meeting-flight-container .mf-plane svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#meeting-flight-container .mf-plane-body {
+  fill: #e63946;
+}
+
+#meeting-flight-container .mf-plane-wing {
+  fill: #c1121f;
+}
+
+#meeting-flight-container .mf-plane-window {
+  fill: #a8dadc;
+}
+
+#meeting-flight-container .mf-plane {
+  margin-left: 10px;
+}
+
+#meeting-flight-container .mf-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  position: relative;
+}
+
+/* Little tow rope from the banner's right edge to the plane's tail. */
+#meeting-flight-container .mf-banner::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+#meeting-flight-container .mf-banner-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#meeting-flight-container .mf-banner-time {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+@keyframes mf-fly {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    /* Travel the full viewport width plus its own width so it fully exits. */
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes mf-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #meeting-flight-container .mf-flyer {
+    animation-duration: 14s;
+  }
+  #meeting-flight-container .mf-plane {
+    animation: none;
+  }
+}

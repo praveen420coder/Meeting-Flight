@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Meeting Flight",
+  "version": "1.0.0",
+  "description": "Connects to Google Calendar and flies a banner-towing plane across your browser to remind you before a meeting.",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "identity",
+    "alarms",
+    "storage",
+    "notifications",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "https://*/*",
+    "http://*/*"
+  ],
+  "oauth2": {
+    "client_id": "287275128919-r2l63fofi3h2ikbs0kk4vh5o74mbvp3l.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.events.readonly"
+    ]
+  },
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Meeting Flight",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

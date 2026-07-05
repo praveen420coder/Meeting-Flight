@@ -1,0 +1,12 @@
+# Private signing key — NEVER commit this. It backs your extension ID.
+key.pem
+
+# Generated build artifacts
+store-build/
+*.zip
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
